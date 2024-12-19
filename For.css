@@ -1,0 +1,32 @@
+body {
+    background-color: #e9ecef;
+}
+.container {
+    margin-top: 30px;
+    padding: 30px;
+    border-radius: 15px;
+    background: linear-gradient(to right, #329699, #28797e); 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+h2 {
+    color: #282828;
+    text-align: center;
+}
+.form-group {
+    margin-bottom: 15px;
+}
+.form-control {
+    border-radius: 5px;
+}
+.form-control:focus {
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+.submit-btn {
+    width: 100%;
+    background-color: #282828;
+}
+footer {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 0.9em;
+}

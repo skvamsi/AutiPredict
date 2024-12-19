@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Autism Prediction Form</title>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="scrip.js"></script>
+    <style>
+      body {
+        background-color: #e9ecef;
+      }
+      .container {
+        margin-top: 30px;
+        padding: 30px;
+        border-radius: 15px;
+        background-color: rgba(50, 150, 153, 0.7);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      }
+      h2 {
+        color: #282828;
+        text-align: center;
+      }
+      .form-group {
+        margin-bottom: 15px;
+      }
+      .form-control {
+        border-radius: 5px;
+      }
+      .form-control:focus {
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+      }
+      .submit-btn {
+        width: 100%;
+      }
+      footer {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.9em;
+      }
+      #predictionResult {
+        color: red;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        font-size: 18px;
+        border-radius: 1em;
+        width: 100%;
+        background-color: rgba(50,150, 153, 0.9);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h2>Pervasive Developmental Disorder Prediction Form</h2>
+      <form
+        id="registrationForm"
+        action="http://127.0.0.1:5003/predict"
+        method="POST"
+      >
+        <h4>Note: If your answer is Yes then select 1 otherwise select 0</h4>
+
+        <hr />
+        <div class="form-group">
+          <select name="A1" class="form-control" required>
+            <option value="0">
+              1. Does the child struggle to understand social cues or norms?
+            </option>
+            <option value="1">1</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <select name="A2" class="form-control" required>
+            <option value="0">
+              2. Does the child have difficulty developing peer relationships?
+            </option>
+            <option value="1">1</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <select name="A3" class="form-control" required>
+            <option value="0">
+              3. Does the child exhibit repetitive or unusual speech patterns?
+            </option>
+            <option value="1">1</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <select name="A4" class="form-control" required>
+            <option value="0">
+              4. Does the child display repetitive motor movements?
+            </option>
+            <option value="1">1</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <select name="A5" class="form-control" required>
+            <option value="0">
+              5. Does the child engage in sensory-seeking or sensory-avoiding
+              behaviors?
+            </option>
+            <option value="1">1</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <select name="A6" class="form-control" required>
+            <option value="0">
+              6. Does the child have restricted interests that limit interaction
+              with peers?
+            </option>
+            <option value="1">1</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <select name="A7" class="form-control" required>
+            <option value="0">
+              7.Does the child struggle to adjust to changes in routines?
+            </option>
+            <option value="1">1</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <select name="A8" class="form-control" required>
+            <option value="0">
+              8.Has the child experienced delayed language development?
+            </option>
+            <option value="1">1</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <select name="A9" class="form-control" required>
+            <option value="0">
+              9. Does the child avoid physical contact or seem unusually
+              sensitive to touch?
+            </option>
+            <option value="1">1</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <select
+            name="A10_Autism_Spectrum_Quotient"
+            class="form-control"
+            required
+          >
+            <option value="0">
+              10. Does your child show unusual or intense reactions to changes
+              in routine or environment?
+            </option>
+            <option value="1">1</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="Social_Responsiveness_Scale"
+            >11. Social responsiveness score:</label
+          >
+          <select
+            name="Social_Responsiveness_Scale"
+            class="form-control"
+            required
+          >
+            <option value="0">Select score</option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="Age_Years">12. Age:</label>
+          <input
+            type="number"
+            name="Age_Years"
+            class="form-control"
+            min="0"
+            max="100"
+            placeholder="Enter Age"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <select name="Qchat_10_Score" class="form-control" required>
+            <option value="0">13. Qchat-10 Score:</option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <select
+            name="Speech Delay/Language Disorder"
+            class="form-control"
+            required
+          >
+            <option value="0">
+              14. If there is any speech delay/language disorder:
+            </option>
+            <option value="1">1</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <select name="Learning disorder" class="form-control" required>
+            <option value="0">15. If there is any learning disorders:</option>
+            <option value="1">1</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <select name="Genetic_Disorders" class="form-control" required>
+            <option value="0">16. Any Genetic disorders:</option>
+            <option value="1">1</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <select
+            name="Childhood Autism Rating Scale"
+            class="form-control"
+            required
+          >
+            <option value="0">17. Childhood Autism Rating Scale:</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <select name="Anxiety_disorder" class="form-control" required>
+            <option value="0">18. Anxiety disorder:</option>
+            <option value="1">1</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <select name="Jaundice" class="form-control" required>
+            <option value="0">19. Jaundice:</option>
+            <option value="1">1</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <select name="Family_mem_with_ASD" class="form-control" required>
+            <option value="0">
+              20. Family members with autism spectrum disorder:
+            </option>
+            <option value="1">1</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>21. Gender:</label>
+          <select name="Gender" class="form-control" required>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>22. Ethnicity:</label>
+          <select name="Ethnicity" class="form-control" required>
+            <option value="White European">White European</option>
+            <option value="Hispanic">Hispanic</option>
+            <option value="Black">Black</option>
+            <option value="Asian">Asian</option>
+            <option value="Native Indian">Native Indian</option>
+            <option value="Middle Eastern">Middle Eastern</option>
+            <option value="South Asian">South Asian</option>
+            <option value="Mixed">Mixed</option>
+            <option value="Latino">Latino</option>
+            <option value="Pacifica">Pacifica</option>
+            <option value="Others">Others</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>23. Who completed the test:</label>
+          <select name="Who" class="form-control" required>
+            <option value="Family member">Family member</option>
+            <option value="Health care">Health care</option>
+            <option value="School & NGO">School & NGO</option>
+            <option value="Self">Self</option>
+            <option value="Others">Others</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>24. Model:</label>
+          <select name="Model" class="form-control" required>
+            <option value="Decision tree">Decision tree</option>
+            <option value="GaussianNB">GaussianNB</option>
+            <option value="Random Forest">Random Forest</option>
+            <option value="ANN">ANN</option>
+          </select>
+        </div>
+       <button
+              type="button"
+              value="Predict"
+              class="btn btn-button submit-btn" 
+              style = "background-color: #282828; color: #fff;" onclick = "final('Pervasive Developmental Disorder')">
+              Submit
+            </button>
+      </form>
+      <div id="predictionResult" class="mt-4"><h6></h6></div>
+      <div><a href="https://www.psychiatry.org/patients-families/autism/what-is-autism-spectrum-disorder" style="text-decoration: none; color: inherit; float: right;">View Article</a></div>
+    </div>
+
+    <footer>
+      <p>&copy; 2024 Autism Prediction BLACK BULLS. All Rights Reserved.</p>
+    </footer>
+  </body>
+</html>
